@@ -35,6 +35,19 @@ if len(sys.argv) > 4:
     print(f"Extra command-line argument: {sys.argv[4]}")
     sys.exit(1)
 
+if fizz == buzz:
+    print(f"fizz and buzz are both {fizz}")
+    sys.exit(1)
+
+if fizz > buzz:
+    print(f"Fizz ({fizz}) is greater than buzz ({buzz})")
+    sys.exit(1)
+
+if fizz > upto:
+    print("No fizzes, buzzes or fizzbuzzes will be printed")
+    print(f"Might I recomend `seq {upto}` instead?")
+    sys.exit(1)
+
 for i in range(1, upto+1):
     if i % fizz == 0 and i % buzz == 0:
         print("fizz buzz")
