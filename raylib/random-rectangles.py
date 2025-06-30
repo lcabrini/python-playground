@@ -9,7 +9,12 @@ pr.set_target_fps(60)
 image = pr.load_image_from_screen()
 pr.image_clear_background(image, pr.BLACK)
 
+fill = False
+
 while not pr.window_should_close():
+    if pr.is_key_pressed(pr.KEY_F):
+        fill = not False
+
     x = pr.get_random_value(0, 1024)
     y = pr.get_random_value(0, 768)
     w = pr.get_random_value(0, 1024-x)
@@ -19,7 +24,11 @@ while not pr.window_should_close():
     b = pr.get_random_value(0, 255)
 
     color = pr.Color(r, g, b, 255)
-    pr.image_draw_rectangle(image, x, y, w, h, color)
+    if fill:
+        pr.image_draw_rectangle(image, x, y, w, h, color)
+    else:
+        pr.image_draw_rectangle_lines(image, (x, y, w, h), 1, color)
+
     texture = pr.load_texture_from_image(image)
 
     pr.begin_drawing()
