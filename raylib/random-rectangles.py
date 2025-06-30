@@ -7,13 +7,19 @@ pr.init_window(1024, 768, "Basic")
 pr.set_target_fps(60)
 
 image = pr.load_image_from_screen()
-pr.image_clear_background(image, pr.BLACK)
 
 fill = False
+clear = True
 
 while not pr.window_should_close():
+    if pr.is_key_pressed(pr.KEY_C):
+        clear = True
     if pr.is_key_pressed(pr.KEY_F):
-        fill = not False
+        fill = not fill
+
+    if clear:
+        pr.image_clear_background(image, pr.BLACK)
+        clear = False
 
     x = pr.get_random_value(0, 1024)
     y = pr.get_random_value(0, 768)
