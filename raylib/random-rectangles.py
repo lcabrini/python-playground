@@ -10,30 +10,34 @@ image = pr.load_image_from_screen()
 
 fill = False
 clear = True
+pause = False
 
 while not pr.window_should_close():
     if pr.is_key_pressed(pr.KEY_C):
         clear = True
     if pr.is_key_pressed(pr.KEY_F):
         fill = not fill
+    if pr.is_key_pressed(pr.KEY_P):
+        pause = not pause
 
-    if clear:
-        pr.image_clear_background(image, pr.BLACK)
-        clear = False
+    if not pause:
+        if clear:
+            pr.image_clear_background(image, pr.BLACK)
+            clear = False
 
-    x = pr.get_random_value(0, 1024)
-    y = pr.get_random_value(0, 768)
-    w = pr.get_random_value(0, 1024-x)
-    h = pr.get_random_value(0, 768-y)
-    r = pr.get_random_value(0, 255)
-    g = pr.get_random_value(0, 255)
-    b = pr.get_random_value(0, 255)
+        x = pr.get_random_value(0, 1024)
+        y = pr.get_random_value(0, 768)
+        w = pr.get_random_value(0, 1024-x)
+        h = pr.get_random_value(0, 768-y)
+        r = pr.get_random_value(0, 255)
+        g = pr.get_random_value(0, 255)
+        b = pr.get_random_value(0, 255)
 
-    color = pr.Color(r, g, b, 255)
-    if fill:
-        pr.image_draw_rectangle(image, x, y, w, h, color)
-    else:
-        pr.image_draw_rectangle_lines(image, (x, y, w, h), 1, color)
+        color = pr.Color(r, g, b, 255)
+        if fill:
+            pr.image_draw_rectangle(image, x, y, w, h, color)
+        else:
+            pr.image_draw_rectangle_lines(image, (x, y, w, h), 1, color)
 
     texture = pr.load_texture_from_image(image)
 
