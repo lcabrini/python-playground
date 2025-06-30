@@ -33,7 +33,7 @@ if len(sys.argv) > 3:
         print(f"Not a valid value for buzz: {sys.argv[3]}")
 if len(sys.argv) > 4:
     print(f"Extra command-line argument: {sys.argv[4]}")
-    os.exit(1)
+    sys.exit(1)
 
 for i in range(1, upto+1):
     if i % fizz == 0 and i % buzz == 0:
