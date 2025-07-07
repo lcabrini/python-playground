@@ -3,17 +3,10 @@
 import random
 
 def min_and_max(nums):
-    min_value = 0
-    max_value = 0
-    started = 0
+    min_value = nums[0]
+    max_value = nums[0]
 
-    for num in nums:
-        if not started:
-            min_value = num
-            max_value = num
-            started = True
-            continue
-
+    for num in nums[1:]:
         if num < min_value:
             min_value = num
         if num > max_value:
